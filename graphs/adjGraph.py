@@ -112,9 +112,9 @@ class adjGraphTests(unittest.TestCase):
             tVertex = int(tVertex)
             self.tGraph.addEdge(fVertex,tVertex)
         for i in self.tGraph:
-            adj = i.getAdj()
+            adj = i.getConnections()
             for k in adj:
-                print(i, k)
+                print(i.getId(), k.getId())
 
         
 if __name__ == '__main__':
