@@ -1,5 +1,5 @@
 '''
-let’s consider the difficult problem of stirring up a batch of pancakes. The recipe is really quite simple: 1 egg, 1 cup of pancake mix, 1 tablespoon oil, and 34 cup of milk. To make pancakes you must heat the griddle(a heavy flat plate), mix all the ingredients together and spoon the mix onto a hot griddle. When the pancakes start to bubble you turn them over and let them cook until they are golden brown on the bottom. Before you eat your pancakes you are going to want to heat up some syrup(a thick sweet liquid).
+One graph algorithm that can help find clusters of highly interconnected vertices in a graph is called the strongly connected components algorithm (SCC). We formally define a strongly connected component, C, of a graph G, as the largest subset of vertices C⊂V such that for every pair of vertices v,w∈C we have a path from v to w and a path from w to v.
 '''
 from pythonds.graphs import Graph, Vertex
 
@@ -74,18 +74,18 @@ def build_graph():
 
 graph = build_graph()
 
+# Use topological sorting to get the list sorted by finish time.
 tmp_list = graph.topological_sorting()
-
-
 for v in tmp_list:
     print(v.getId(),':',v.getFinish())
-
 print('')
 
+# Compute graph by reversing the edge.
 graph_t = reverse_graph(graph)
 for v in graph_t:
     print(v.getId(), ':', [y.getId() for y in v.getConnections()])
 
+# Call dfs for the graph Gt but in the main loop of DFS explore each vertex in decreasing order of finish time
 for av in tmp_list:
     tmp_av = graph_t.getVertex(av.getId())
     if tmp_av.getColor() == 'white':
