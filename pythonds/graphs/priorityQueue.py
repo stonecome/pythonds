@@ -102,8 +102,15 @@ class TestBinHeap(unittest.TestCase):
         self.theHeap.add((4,'d'))
 
 
-    def testInsert(self):
+    def testSize(self):
         assert self.theHeap.currentSize == 5
+
+    def testInsert(self):
+        self.theHeap.add((1,'t'))
+        assert self.theHeap.heapArray[1] == (1,'t')
+
+    def testContains(self):
+        assert 'x' in self.theHeap
 
     def testDelmin(self):
         assert self.theHeap.delMin() == 'x'
