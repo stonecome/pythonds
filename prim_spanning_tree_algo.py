@@ -44,5 +44,8 @@ graph = build_graph()
 
 prim(graph, graph.getVertex('A'))
 
-for ve in graph:
+temp_list = [ve for ve in graph]
+temp_list.sort(key=lambda x:x.getDistance())
+
+for ve in temp_list:
     print(ve.getId(), ':', ve.getDistance())
