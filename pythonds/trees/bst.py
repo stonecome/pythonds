@@ -338,7 +338,7 @@ class BinaryTreeTests(unittest.TestCase):
         print('initial inorder')
         self.bst.inorder()
         assert (10 in self.bst) == True        
-        self.bst.delete_key(10)
+        self.bst.delete(10)
         print('delete 10 inorder')
         self.bst.inorder()        
         assert (10 in self.bst) == False
@@ -346,13 +346,13 @@ class BinaryTreeTests(unittest.TestCase):
         assert self.bst.root.leftChild.parent == self.bst.root
         assert self.bst.root.leftChild.rightChild.parent == self.bst.root.leftChild
         assert self.bst.get(30) == 'd'
-        self.bst.delete_key(15)
+        self.bst.delete(15)
         print('delete 15 inorder')
         self.bst.inorder()
         assert self.bst.root.leftChild.key == 30
         assert self.bst.root.leftChild.rightChild.key == 45
         assert self.bst.root.leftChild.rightChild.parent == self.bst.root.leftChild
-        self.bst.delete_key(70)
+        self.bst.delete(70)
         print('delete 70 inorder')        
         self.bst.inorder()        
         assert (85 in self.bst) == True
@@ -362,7 +362,7 @@ class BinaryTreeTests(unittest.TestCase):
         print('left left = ',self.bst.root.leftChild.leftChild.key)
         print('left right = ',self.bst.root.leftChild.rightChild.key)        
         print('right = ',self.bst.root.rightChild.key)
-        self.bst.delete_key(50)
+        self.bst.delete(50)
         assert self.bst.root.key == 85
         assert self.bst.root.leftChild.key == 30
         assert self.bst.root.rightChild == None
@@ -372,18 +372,18 @@ class BinaryTreeTests(unittest.TestCase):
         assert self.bst.root.leftChild.rightChild.parent == self.bst.root.leftChild
         print('new root key = ', self.bst.root.key)
         self.bst.inorder()
-        self.bst.delete_key(45)
+        self.bst.delete(45)
         assert self.bst.root.leftChild.key == 30
-        self.bst.delete_key(85)
+        self.bst.delete(85)
         assert self.bst.root.key == 30
         print('xxxx ',self.bst.root.leftChild.parent.key, self.bst.root.key)
         assert self.bst.root.leftChild.parent == self.bst.root
-        self.bst.delete_key(30)
+        self.bst.delete(30)
         assert self.bst.root.key == 5
         self.bst.inorder()
         print("final root = " + str(self.bst.root.key))
         assert self.bst.root.key == 5
-        self.bst.delete_key(5)
+        self.bst.delete(5)
         assert self.bst.root == None
 
     def testDel2(self):
@@ -392,15 +392,15 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(24,'c')
         self.bst.put(11,'d')
         self.bst.put(22,'d')
-        self.bst.delete_key(10)
+        self.bst.delete(10)
         assert self.bst.root.leftChild.key == 11
         assert self.bst.root.leftChild.parent == self.bst.root
         assert self.bst.root.rightChild.key == 24
-        self.bst.delete_key(24)
+        self.bst.delete(24)
         assert self.bst.root.rightChild.key == 22
         assert self.bst.root.rightChild.parent == self.bst.root
-        self.bst.delete_key(22)
-        self.bst.delete_key(21)
+        self.bst.delete(22)
+        self.bst.delete(21)
         print("del2 root = ",self.bst.root.key)
         assert self.bst.root.key == 11
         assert self.bst.root.leftChild == None
@@ -432,7 +432,7 @@ class BinaryTreeTests(unittest.TestCase):
                 assert succ.key == sortList[rootPos+1]
             else:
                 assert self.bst.root.rightChild == None
-            self.bst.delete_key(n)
+            self.bst.delete(n)
             sortList.remove(n)
             
         assert self.bst.root == None
@@ -462,7 +462,7 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(5,5)
         self.bst.put(1,1)
         self.bst.put(6,6)
-        self.bst.delete_key(7)
+        self.bst.delete(7)
         assert self.bst.root.leftChild.key == 5
         assert self.bst.root == self.bst.root.leftChild.parent
         assert self.bst.root.leftChild.leftChild.key == 1
@@ -475,7 +475,7 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(12,12)
         self.bst.put(11,11)
         self.bst.put(13,13)
-        self.bst.delete_key(15)
+        self.bst.delete(15)
         assert self.bst.root.rightChild.key == 12
         assert self.bst.root.rightChild.parent == self.bst.root
         assert self.bst.root.rightChild.leftChild.key == 11
@@ -488,7 +488,7 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(8,8)
         self.bst.put(7,7)
         self.bst.put(9,9)
-        self.bst.delete_key(6)
+        self.bst.delete(6)
         assert self.bst.root.leftChild.key == 8
         assert self.bst.root.leftChild.parent == self.bst.root
         assert self.bst.root.leftChild.leftChild.key == 7
@@ -501,7 +501,7 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(20,20)
         self.bst.put(17,17)
         self.bst.put(22,22)
-        self.bst.delete_key(15)
+        self.bst.delete(15)
         assert self.bst.root.rightChild.key == 20
         assert self.bst.root.rightChild.parent == self.bst.root
         assert self.bst.root.rightChild.rightChild.key == 22
@@ -512,7 +512,7 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(20,20)
         self.bst.put(17,17)
         self.bst.put(22,22)
-        self.bst.delete_key(10)
+        self.bst.delete(10)
         assert self.bst.root.key == 20
         assert self.bst.root.leftChild.parent == self.bst.root
         assert self.bst.root.rightChild.parent == self.bst.root
@@ -524,7 +524,7 @@ class BinaryTreeTests(unittest.TestCase):
         self.bst.put(5,5)
         self.bst.put(1,1)
         self.bst.put(7,7)
-        self.bst.delete_key(10)
+        self.bst.delete(10)
         assert self.bst.root.key == 5
         assert self.bst.root.leftChild.parent == self.bst.root
         assert self.bst.root.rightChild.parent == self.bst.root
@@ -534,10 +534,10 @@ class BinaryTreeTests(unittest.TestCase):
     def testBadDelete(self):
         self.bst.put(10,10)
         with self.assertRaises(KeyError):
-            self.bst.delete_key(5)
-        self.bst.delete_key(10)
+            self.bst.delete(5)
+        self.bst.delete(10)
         with self.assertRaises(KeyError):
-             self.bst.delete_key(5)
+             self.bst.delete(5)
 
 if __name__ == '__main__':
     import platform
