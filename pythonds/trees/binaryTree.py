@@ -5,6 +5,8 @@
 
 from __future__ import print_function
 
+import operator
+
 class BinaryTree:
     """
     A recursive implementation of Binary Tree
@@ -141,18 +143,3 @@ def height(tree):
     else:
         return 1 + max(height(tree.leftChild),height(tree.rightChild))
 
-if __name__ == '__main__':
-    t = BinaryTree(7)
-    t.insertLeft(3)
-    t.insertRight(9)
-    inorder(t)
-    import operator
-    x = BinaryTree('*')
-    x.insertLeft('+')
-    l = x.getLeftChild()
-    l.insertLeft(4)
-    l.insertRight(5)
-    x.insertRight(7)
-    print(printexp(x))
-    print(postordereval(x))
-    print(height(x))
