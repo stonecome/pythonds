@@ -10,7 +10,7 @@ class adjGraphTests(unittest.TestCase):
         self.tGraph = Graph()
         
     def testMakeGraph(self):
-        with open("test.dat") as gFile:
+        with open("./tests/test.dat") as gFile:
             for line in gFile:
                 fVertex, tVertex = line.split('|')
                 fVertex = int(fVertex)
